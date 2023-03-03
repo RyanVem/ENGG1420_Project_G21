@@ -6,7 +6,7 @@ package engg1420_finalproject;
 
 /**
  *
- * @author ryanv
+ * @author ryanv, Jacob
  */
 public class ENGG1420_FinalProject {
 
