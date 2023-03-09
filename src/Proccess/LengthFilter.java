@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author 
+ * @author Ryan Vemulapalli
  */
 public class LengthFilter {
     public ArrayList<Object> NameFilter(ArrayList<Object> inputList, long Length, String Operator){
