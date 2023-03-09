@@ -12,9 +12,18 @@ import java.util.ArrayList;
  */
 public class NameFilter {
     
-    public ArrayList<Object> NameFilter(ArrayList<Object> inputList){
+    public ArrayList<Object> NameFilter(ArrayList<Object> inputList, String Key){
+        ArrayList<Object> outputList = new ArrayList<Object>();
         
-        return inputList;
+        for (Object obj : inputList) {  //Interate over the input entries object ArrayList.
+            String name; //Temp name string that will hold current object's name.
+            name = obj.getName(); //Need to create getName method in input objects that are in the arrayList input.
+            
+            if (name.contains(Key)){
+                outputList.add(obj);
+            }
+        }   
+        return outputList; //Returned filtered ArrayList
     }
     
 }
