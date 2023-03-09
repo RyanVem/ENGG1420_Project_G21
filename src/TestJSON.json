@@ -7,11 +7,6 @@
     {
     "type": "local",
     "path": "c:\\sample\\text_files"
-    },
-    {
-    “type”: “remote”,
-    “repositoryId”: “repository id”,
-    “entryId”: “entry id”
     }
     ],
     "parameters": [
