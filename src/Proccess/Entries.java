@@ -6,7 +6,7 @@ package Proccess;
 
 /**
  *
- * @author Jacob
+ * @author Reanna
  */
 public class Entries {
     private String name;
