@@ -4,10 +4,19 @@
  */
 package Proccess;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ryanv
  */
 public class SplitProcessingElement {
+    public ArrayList<String> SplitProcessingElement(ArrayList<String> inputList, int Lines){
+        ArrayList<String> outputList = new ArrayList<String>();
+        
+        return outputList;
+    }
+        
+        
     
 }
