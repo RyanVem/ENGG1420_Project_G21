@@ -19,10 +19,19 @@ import java.nio.file.Paths;
  */
 public class SplitProcessingElement {
    
-    public ArrayList<String> SplitProcessingElement(ArrayList<String> inputList, int Lines){
-        ArrayList<String> filesList = new ArrayList<String>();
+    public ArrayList<String> SplitProcessingElement(ArrayList<String> inputList, int lines){
+        ArrayList<String> outputList = new ArrayList<String>();
         
-        return filesList;
+        for (String entry : inputList) {
+            Path path = Paths.get(entry);
+
+            if (Files.isDirectory(path)) {
+                // Ignore directories
+                continue;
+            }
+        }
+            
+        return outputList;
     }
     
 }
