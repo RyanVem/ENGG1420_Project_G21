@@ -17,15 +17,22 @@ public class ENGG1420_FinalProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        // TODO code application logic here
         
+
+        // This code is used to test the Split Processing Element     
+        /*
         ArrayList<String> FileTest = new ArrayList<String>();
-        FileTest.add("testfile.txt");
+        FileTest.add("C:/Users/ryanv/Documents/Programing/Java/ENGG1420_FinalProject/src/Proccess/testfile.txt");
+        FileTest.add("C:/Users/ryanv/Documents/Programing/Java/ENGG1420_FinalProject/src/Proccess/testfile2.txt");
         
         SplitProcessingElement myElement = new SplitProcessingElement(FileTest, 2);
+        ArrayList<String> outputFiles = myElement.FileSeparater();
         
-        myElement.FileSeparater();
+        for(String file : outputFiles){
+            System.out.println(file);
+        }
+        */
         
     }
-    
+   
 }
