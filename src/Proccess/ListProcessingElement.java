@@ -1,77 +1,42 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Proccess;
 
 /**
  *
- * @author andrea
+ * @author Reanna
  */
-
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
-public class ListProcessingElement {
-    private ArrayList<String> processList;
+public class ReadJSON {
+    //constructor to take JSOn file input
+    private String JSONFILEpath = "";   
+    public List<Entries> entryList;
     
-    //creating constructor 
-    public ListProcessingElement(ArrayList<String> processList){
-    this.processList = processList;
-    }
+    //opening the JSON file and storing it under the name fileInput 
+    private final JSONParser parser = new JSONParser();
+    private Object fileInput; 
     
-    public static ArrayList<String> ProcessList(ArrayList<String> inputList, int Max) throws IOException{
-        ArrayList<String> outputList = new ArrayList<String>();
-        
-        //looping through entries in inputList to check if each one is a directory
-        for(String entry : inputList){
-            File file = new File(entry);
-            if(file.isDirectory()){
-                //calling listProcessing method to get the list of entries in the directory
-                ArrayList<String> directoryList = listProcessing(file);
-                
-                //add all the entries or the maximum number of entries from the directory
-                int numEntries = Math.min(directoryList.size(), Max);
-                for(int i = 0; i < numEntries; i++){
-                    outputList.add(directoryList.get(i));
-                }
+    ReadJSON(String path){
+        this.JSONFILEpath = path;
+        this.fileInput = parser.parse(new FileReader(JSONFILEpath));
+        JSONObject jsonObject = (JSONObject)fileInput;
+        JSONArray inputEntries = (JSONArray)jsonObject.get("input_entries");
+        for(int i = 0; i<inputEntries.size(); i++){
+            JSONObject temp = (JSONObject)inputEntries.get(i);
+            if(temp.get("type") == "local"){
+                entryList.add(new Entries("local", (String)temp.get("path")));
+            }else if(temp.get("type") == "remote"){
+                entryList.add(new Entries("remote", (String)temp.get("repositoryID"), (String)temp.get("entryID")));
             }
         }
-        return outputList;
     }
     
-    //returns directoryList with all directories and sub directoies
-    private static ArrayList<String> listProcessing(File directory) throws IOException{
-        ArrayList<String> directoryList = new ArrayList<String>();
-        
-        //iterating through all of the entires to check is each one is a directory.
-        for(File file : directory.listFiles()){
-            if(file.isDirectory()){
-                //calls listProcessing on the sub directory and adds the entries in the sub directory to direcroyList
-                directoryList.addAll(listProcessing(file));
-            }
-            else{
-                //if not a directory, the absolute path gets add tp the directoeyList
-                directoryList.add(file.getAbsolutePath());
-            }
-        }
-        return directoryList;
-    }
     
-    public static void main(String[] args)throws IOException {
-       //inputting the maximum number of entries 
-        int Max;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter the maximum number of entries to be outputted: ");
-        Max = scanner.nextInt();
-        
-        //List<String> input = Arrays.asList();
-        
-        ArrayList<String> input = new ArrayList<>(); //figure out how to input the dircetoies 
-        
-        ArrayList<String> output = ProcessList(input,Max);
-        
-        System.out.println(output);
-    }
+    
 }
