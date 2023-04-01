@@ -22,4 +22,9 @@ public class PrintElement {
             System.out.println("Path:" + entry.getPath());
         }
     }
+    
+    PrintElement(Entries[] entryList){
+        this.entryList = entryList;
+        
+    }
 }
